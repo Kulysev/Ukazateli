@@ -1,0 +1,144 @@
+#include <iostream> // 1
+
+int main() {
+    double a;
+    double b;
+
+    std::cout << "Введите первое число: ";
+    std::cin >> a;
+    std::cout << "Введите второе число: ";
+    std::cin >> b;
+
+    double* p1 = &a; 
+    double* p2 = &b; 
+
+    double max_element;
+
+    if (*p1 > *p2) {
+        max_element = *p1; 
+    } else {
+        max_element = *p2; 
+    }
+
+    std::cout << "Наибольшее число: " << max_element << std::endl;
+
+    return 0;
+}
+
+#include <iostream> // 2
+
+int main() {
+    double number;
+
+    std::cout << "Введите число: ";
+    std::cin >> number;
+
+    double* ptr = &number; 
+
+    if (*ptr > 0) {
+        std::cout << "Число положительное" << std::endl;
+    } else if (*ptr < 0) {
+        std::cout << "Число отрицательное" << std::endl;
+    } else {
+        std::cout << "Число равно нулю" << std::endl;
+    }
+
+    return 0;
+}
+
+#include <iostream> // 3
+
+int main() {
+    int a, b;
+
+    std::cout << "Введите первое число: ";
+    std::cin >> a;
+    std::cout << "Введите второе число: ";
+    std::cin >> b;
+
+    int* ptr1 = &a; // Указатель на первое число
+    int* ptr2 = &b; // Указатель на второе число
+
+    std::cout << "До обмена: a = " << *ptr1 << ", b = " << *ptr2 << 
+    std::endl;
+
+    int temp = *ptr1; 
+    *ptr1 = *ptr2;    
+    *ptr2 = temp;    
+
+    std::cout << "После обмена: a = " << *ptr1 << ", b = " << *ptr2 << 
+    std::endl;
+
+    return 0;
+}
+
+#include <iostream> // 4
+
+int main() {
+    double num1, num2, result;
+    char operation;
+
+    std::cout << "Введите первое число: ";
+    std::cin >> num1;
+    std::cout << "Введите второе число: ";
+    std::cin >> num2;
+
+    std::cout << "Введите операцию (+, -, *, /): ";
+    std::cin >> operation;
+
+    double* Num1 = &num1;
+    double* Num2 = &num2; 
+    double* Result = &result;
+
+    if (operation == '+') {
+        *Result = *Num1 + *Num2; 
+    } else if (operation == '-') {
+        *Result = *Num1 - *Num2; 
+    } else if (operation == '*') {
+        *Result = *Num1 * *Num2; 
+    } else if (operation == '/') {
+        if (*Num2 != 0) {
+            *Result = *Num1 / *Num2; 
+        } else {
+            std::cout << "Ошибка: деление на ноль!" << std::endl;
+            return 1; 
+        }
+    } else {
+        std::cout << "Ошибка: неверная операция!" << std::endl;
+        return 1; 
+    }
+
+    std::cout << "Результат: " << *Result << std::endl;
+
+    return 0;
+}
+
+#include <iostream> // 5
+
+int main() {
+    int array1[] = {9, 6, 2};
+    int array2[] = {2, 9, 5};
+    int array3[] = {8, 3, 7};
+    int array4[] = {7, 1, 3};
+    int array5[] = {1, 4, 5};
+    int array6[] = {4, 8, 6};
+
+    const int size = 3;
+
+    auto sumArray = [](int* arr, int size) {
+        int sum = 0;
+        for (int i = 0; i < size; ++i) {
+            sum += *(arr + i); 
+        }
+        return sum;
+    };
+
+    std::cout << "Сумма элементов первого массива: " << sumArray(array1, size) << std::endl;
+    std::cout << "Сумма элементов второго массива: " << sumArray(array2, size) << std::endl;
+    std::cout << "Сумма элементов третьего массива: " << sumArray(array3, size) << std::endl;
+    std::cout << "Сумма элементов четвертого массива: " << sumArray(array4, size) << std::endl;
+    std::cout << "Сумма элементов пятого массива: " << sumArray(array5, size) << std::endl;
+    std::cout << "Сумма элементов шестого массива: " << sumArray(array6, size) << std::endl;
+
+    return 0;
+}
